@@ -22,13 +22,13 @@ To determine acting order during an encounter, initiative is rolled by adding a 
 
 ## Functional requirements
 
-###Encouters
+### Encouters
 
 * It should be possible to create several encounters beforehand.
 * Players and monsters can be saved to an encounter, so no time is wasted during actual play.
 * Loading an encounter should take you to the encounter view.
 
-###Characters
+### Characters
 
 * Characters can be created and saved in the app
 * A list of characters can be displayed
@@ -40,7 +40,7 @@ To determine acting order during an encounter, initiative is rolled by adding a 
   * Armor Class (AC): how difficult it is to hit the character
   * Initiative modifier (init): This is the modifier used when rolling initiative
    
-###Creatures
+### Creatures
 
 * Creatures can be loaded from a list in the app and added to an encounter
 * A user should also be able to create their own creatures
