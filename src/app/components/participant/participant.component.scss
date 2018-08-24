@@ -1,0 +1,134 @@
+@import "../../../variables";
+@import "../../../mixins";
+
+.list {
+  @include flex(column, nowrap);
+  margin: $margin-normal;
+  min-width: 90%;
+
+  li {
+    margin: $margin-small 0;
+  }
+}
+
+.box {
+  min-width: 400px;
+  overflow: hidden;
+  border: 1px solid $color-fg;
+  @include shadow();
+  padding: 0;
+  font-weight: bold;
+  opacity: 0.9;
+  @include flex(column, nowrap);
+}
+
+.box.active {
+  border: 2px solid $color-active;
+  border-radius: $margin-normal;
+}
+
+.box .title-row {
+  background-color: $color-tab-border;
+  color: $color-tab-fg;
+  line-height: $line-height-relative;
+  margin: 0;
+  @include flex(row, nowrap, space-between, center);
+
+  .marker, .title, .label {
+    padding: $margin-small;
+  }
+
+  .marker {
+    display: inline;;
+    width: 20px - $margin-small;
+    color: $color-tab-icon;
+    padding-left: $margin-normal;
+  }
+
+  .title {
+    width: 90%;
+    @include flex(row, nowrap, space-between);
+
+    .name {
+      line-height: $line-height-fixed;
+      vertical-align: bottom;
+      font-family: $font-title;
+      font-size: $font-size-subtitle;
+    }
+
+    .label.player, .label.event {
+      background-color: $color-tab-fg;
+      color: $color-fg;
+      padding: 2px 5px;
+    }
+  }
+}
+
+.box .details {
+  width: 100%;
+  @include flex(row, nowrap, space-around);
+  align-items: center;
+
+  .description {
+    display: inline-block;
+    padding: $margin-normal;
+    width: 100%;
+  }
+
+  .image {
+    padding: $margin-normal;
+
+    img {
+      margin: $margin-small;
+      align-self: center;
+      height: auto;
+      width: 100px;
+    }
+  }
+
+  .creature-detail {
+    @include flex(row, nowrap, space-between);
+    max-width: 100%;
+    min-width: 70%;
+
+    .hp, .ac, .init {
+      display: inline-block;
+      margin: $margin-normal;
+      min-width: 15%
+    }
+  }
+}
+
+.box.bleeding {
+  .title-row {
+    background-color: $color-bleeding-dark;
+  }
+  .details {
+    background-color: $color-bleeding-light;
+    color: $color-tab-fg;
+    text-shadow: 1px 1px 2px $color-fg;
+  }
+}
+
+.box.dead {
+  opacity: 0.5;
+}
+
+.box.invisible {
+  opacity: 0.5;
+
+  .title-row {
+    background-color: $color-invisible-dark;
+  }
+  .details {
+    background-color: $color-invisible-light;
+  }
+}
+
+app-toolbar {
+  display: none;
+
+  &.visible {
+    display: inline;
+  }
+}

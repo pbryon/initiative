@@ -1,0 +1,38 @@
+@import "../../../variables";
+@import "../../../mixins";
+
+.edit {
+  @include flex(row, wrap, space-between);
+  padding: $margin-normal;
+  max-width: 70%;
+
+  * {
+    margin: $margin-small 0;
+  }
+
+  .label {
+    padding: $margin-small;
+  }
+
+  .description {
+    @include flex(row, nowrap, flex-start );
+  }
+
+  input[type=number] {
+    @include fixed(50px);
+  }
+
+  input, textarea {
+    @include form-control();
+  }
+
+  .button {
+    @include flex(column, nowrap, center);
+    align-content: start;
+
+    button {
+      @include form-button();
+    }
+  }
+}
+

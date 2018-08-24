@@ -1,0 +1,58 @@
+@import "../../../variables";
+@import "../../../mixins";
+
+.toolbar {
+  @include flex(row, nowrap, space-around);
+  @include shadow( $color-shadow, $margin-small, $margin-small, $margin-small);
+  line-height: $line-height-fixed;
+
+  margin-top: 2px;
+  border: 1px solid $color-fg;
+  padding: $margin-small;
+  background-color: $color-toolbar;
+
+  * {
+    margin: $margin-small;
+  }
+
+  .fas {
+    padding-top: $margin-normal;
+  }
+}
+
+.damage {
+  @include flex(row, nowrap, space-between);
+  .button {
+    @include form-button();
+    @include fixed (75px);
+    height: 28px;
+    cursor: default;
+  }
+
+  #amount {
+    border-radius: $margin-small;
+  }
+}
+
+.remove {
+  @include flex(row, nowrap, space-between);
+
+  .confirmation {
+    display: none;
+
+    * {
+      padding: $margin-small;
+    }
+
+    .fa-check {
+      color: green;
+    }
+
+    .fa-times {
+      color: red;
+    }
+  }
+  .confirmation.show {
+    display: inline;
+  }
+}

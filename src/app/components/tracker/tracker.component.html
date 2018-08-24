@@ -1,0 +1,63 @@
+<div *ngIf="encounter">
+  <div class="title">
+    <h2>
+      {{encounter.name}}
+      {{encounter.hasStarted()
+        ? ' - round ' + encounter.round
+        : ''
+      }}
+    </h2>
+    <span class="controls">
+      <span class="previous" title="Previous turn"
+          [ngClass]="{ show: encounter.havePrevious()}"
+          (click)="previousActor()"
+      >
+        <i class="fas fa-backward fa-2x fa-fw"></i>
+      </span>
+      <span class="next"
+          [title]="encounter.describeNext()"
+          (click)="nextActor()"
+          *ngIf="!rollInit && encounter.participants.length"
+      >
+        <i class="fas fa-2x fa-fw"
+          [ngClass]="encounter.hasStarted() ? 'fa-forward' : 'fa-play'"
+        ></i>
+      </span>
+      <span class="save" title="Save encounter"
+        (click)="toggleSave()"
+        *ngIf="encounter.participants.length > 0"
+      >
+        <i class="fas fa-save  fa-2x fa-fw"></i>
+      </span>
+      <span class="new" title="New encounter" (click)="clearEncounter()">
+        <i class="fas fa-eraser fa-2x fa-fw"></i>
+      </span>
+    </span>
+  </div>
+  <div class="save-form" *ngIf="save">
+    <div class="inputs">
+      <span class="label">Save as: </span>
+      <input id="name-field" type="text" [(ngModel)]="encounter.name">
+      <button (click)="saveEncounter()">Save</button>
+    </div>
+  </div>
+  <app-initiative *ngIf="rollInit"
+    [actors]="firstRoundActors()"
+    [round]="encounter.round + 1"
+    (initiative)="onInitiativeRolled($event)"
+  ></app-initiative>
+  <app-participant
+    [participants]="getEvents()"
+    [selected]="selected"
+    (removed)="onItemRemoved($event)"
+    (selectionChanged)="onSelectionChanged($event)"
+    (damaged)="onActorDamage($event)"
+  ></app-participant>
+  <app-participant
+    [participants]="getCreatures()"
+    [selected]="selected"
+    (removed)="onItemRemoved($event)"
+    (selectionChanged)="onSelectionChanged($event)"
+    (damaged)="onActorDamage($event)"
+  ></app-participant>
+</div>

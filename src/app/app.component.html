@@ -1,0 +1,32 @@
+<main>
+  <section id="sidebar">
+    <nav>
+      <a (click)="setMenu('creatures')">
+        <i class="fas fa-fw fa-lg" [ngClass]="icon('creature')"></i>
+        Creatures
+      </a>
+      <a (click)="setMenu('characters')">
+        <i class="fas fa-fw fa-lg" [ngClass]="icon('character')"></i>
+        Characters
+      </a>
+      <a (click)="setMenu('events')">
+        <i class="fas fa-fw fa-lg" [ngClass]="icon('event')"></i>
+        Events
+      </a>
+      <a (click)="setMenu('encounters')">
+        <i class="fas fa-fw fa-lg" [ngClass]="icon('encounter')"></i>
+        Encounters
+      </a>
+    </nav>
+    <app-list
+      [items]="list"
+      (changeRoute)="onRouteChange($event)"
+      (addActor)="onAddActor($event)"
+    ></app-list>
+  </section>
+  <section id="working-area">
+    <router-outlet
+      (activate)="onActivate($event)"
+    ></router-outlet>
+  </section>
+</main>

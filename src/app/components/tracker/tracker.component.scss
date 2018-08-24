@@ -1,0 +1,69 @@
+@import "../../../variables";
+@import "../../../mixins";
+
+.title {
+  @include flex(row, nowrap, space-between);
+  position: sticky;
+  top: 0;
+  margin-bottom: $margin-small;
+  padding-top: $margin-normal;
+  background-color: $color-bg;
+  z-index: 100;
+
+
+  h2 {
+    min-width: 50%;
+  }
+
+  .controls {
+    @include flex(row, nowrap, space-between);
+    place-content: start;
+
+    .fas {
+      padding: $margin-normal;
+    }
+
+    .previous, .next, .new {
+      cursor: pointer;
+    }
+
+    .previous {
+      display: none;
+
+      &.show {
+        display: inline;
+      }
+    }
+  }
+}
+
+.save-form {
+  @include flex(row, nowrap, flex-start);
+  margin: $margin-normal;
+  background-color: $color-bg;
+  position: sticky;
+  top: 50px;
+  z-index: 100;
+  padding-bottom: $margin-small;
+
+  .inputs {
+    width: 60%;
+
+    .label {
+      padding: $margin-small;
+    }
+
+    input {
+      @include form-control();
+      min-width: 200px;
+    }
+
+    button {
+      @include form-button();
+    }
+
+    * {
+      margin: 0 $margin-small;
+    }
+  }
+}

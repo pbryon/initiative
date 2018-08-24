@@ -1,0 +1,55 @@
+@import "../variables";
+@import "../mixins";
+
+header {
+  height: 5vh;
+}
+
+main {
+  @include flex(row, nowrap, space-between);
+  position: absolute;
+  height: 99vh;
+  width: 99vw;
+
+  & > * {
+    box-sizing: border-box;
+    overflow: hidden;
+    height: 100%;
+    margin-top: 1vh;
+  }
+}
+
+#sidebar {
+  padding: 0;
+  box-shadow: $color-shadow $margin-small $margin-small $margin-small  ;
+  margin-right: $margin-normal;
+  border: 1px solid $color-fg;
+  border-radius: $margin-small;
+  @include flex(column, nowrap );
+  place-content: start;
+  width: 40%;
+
+  nav {
+    @include flex(row, nowrap, space-between);
+    background-color: $color-tab-bg;
+
+    a {
+      cursor: pointer;
+      text-decoration: none;
+      background-color: $color-tab-bg;
+      color: $color-tab-fg;
+
+      .fas {
+        color: $color-tab-icon;
+      }
+    }
+  }
+}
+
+#working-area {
+  padding: $margin-normal;
+  padding-top: 0;
+  padding-left: 0;
+  overflow-y: auto;
+  width: 59%;
+}

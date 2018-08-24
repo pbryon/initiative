@@ -1,0 +1,74 @@
+@import "../../../variables";
+@import "../../../mixins";
+
+$first-column: 70%;
+
+section {
+  border: 1px solid $color-initiative-bg;
+  margin: $margin-normal;
+  border-radius: $margin-small;
+  overflow: hidden;
+}
+
+.error {
+  margin: $margin-small 0;
+  color: $color-bleeding-dark;
+  padding: $margin-normal;
+}
+
+.title, .actor, .all {
+  @include flex(row, wrap, space-between);
+  padding: $margin-normal;
+
+  .initiative {
+    @include fixed(160px);
+
+    * {
+      margin: 0 $margin-small;
+    }
+  }
+}
+
+.modifier {
+  @include fixed(25px);
+  padding: $margin-small;
+}
+
+input {
+  @include form-control();
+  width: 45px;
+}
+
+header {
+  background-color: $color-initiative-bg;
+  color: $color-initiative-fg;
+  padding: $margin-normal;
+
+  h2 {
+    font-size: $font-size-subtitle;
+    margin: 0;
+    @include fixed($first-column);
+  }
+
+  button {
+    @include form-button( $color-initiative-fg, $color-initiative-bg, $color-initiative-fg);
+  }
+}
+
+.actor, .all {
+  background-color: $color-initiative-light-bg;
+
+  .name {
+    @include fixed($first-column);
+  }
+
+  button {
+    @include form-button( $color-initiative-bg, $color-initiative-fg, $color-initiative-bg);
+  }
+}
+
+.all {
+  .initiative {
+    @include flex(row, nowrap, flex-end, flex-end)
+  }
+}

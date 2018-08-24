@@ -1,0 +1,23 @@
+<h2>Edit {{item.name}}</h2>
+<div class="edit">
+  <span class="name">
+    <span class="label">Name: </span>
+    <input type="text" [(ngModel)]="item.name">
+  </span>
+  <span class="start" title="The round this event takes place, or -1 for every round">
+    <span class="label">Round: </span>
+    <input type="number" [(ngModel)]="item.startingRound">
+  </span>
+  <span class="image">
+    <span class="label">Image URL: </span>
+    <input type="text" [(ngModel)]="item.image.url">
+  </span>
+  <span class="description">
+    <span class="label">Description: </span>
+    <textarea rows="3" [(ngModel)]="item.description"></textarea>
+  </span>
+  <span class="button">
+    <button (click)="save()">Save</button>
+  </span>
+</div>
+

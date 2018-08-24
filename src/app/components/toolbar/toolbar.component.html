@@ -1,0 +1,24 @@
+<div class="toolbar">
+  <span title="Toggle invisible" (click)="toggleInvisible()">
+    <i class="fas fa-eye fa-fw fa-lg"></i>
+  </span>
+  <span *ngIf="actor.isCreature()" class="damage" title="Damage/heal">
+    <i class="fas fa-skull fa-fw fa-lg"></i>
+    <input id="amount" type="number"
+       [(ngModel)]="amount"
+       [min]="maxHP(-1)"
+       [max]="maxHP(1)"
+    />
+    <span class="button" (click)="applyDamage()">
+      {{amount >= 0 ?  'Heal' : 'Damage'}}
+    </span>
+  </span>
+  <span class="remove" title="Remove from encounter">
+    <i class="fas fa-trash-alt fa-fw fa-lg" (click)="toggleDelete(true)"></i>
+    <span class="confirmation" [ngClass]="{show: delete}">
+      <span>Sure?</span>
+      <i class="fas fa-check fa-fw fa-lg" title="Yes" (click)="removeItem()"></i>
+      <i class="fas fa-times fa-fw fa-lg" title="No" (click)="toggleDelete(false)"></i>
+    </span>
+  </span>
+</div>

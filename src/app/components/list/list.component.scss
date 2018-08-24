@@ -1,0 +1,51 @@
+@import "../../../variables";
+@import "../../../mixins";
+
+.list {
+  @include flex(column, nowrap);
+
+  .row {
+    @include flex(row, nowrap, space-between);
+    width: 100%;
+
+    &.new {
+      @include flex(row, nowrap, start, flex-start);
+
+      .label {
+        font-weight: bold;
+      }
+    }
+
+    &:nth-child(even) {
+      background-color: $color-row-even;
+    }
+
+    &:nth-child(odd) {
+      background-color: $color-row-odd;
+    }
+
+    .name {
+      width: 95%;
+      cursor: cell;
+    }
+
+    * {
+      padding: $margin-small;
+    }
+
+    .link {
+      display: none;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+    }
+
+    &:hover {
+      background-color: $color-row-hover;
+
+      .link {
+        display: inline;
+      }
+    }
+  }
+}

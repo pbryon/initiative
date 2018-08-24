@@ -1,0 +1,14 @@
+<div class="list">
+  <div class="row" *ngFor="let item of items">
+    <span class="name" (click)="onRowClick(item)">{{item.name}}</span>
+    <span class="link" (click)="onEditClick(item)">
+      <i class="edit fas fa-edit fa-fw"></i>
+    </span>
+  </div>
+  <div class="row new" (click)="onCreateNew()">
+    <span class="label">{{addText()}}</span>
+    <span>
+      <i class="fas fa-plus-square fa-fw"></i>
+    </span>
+  </div>
+</div>

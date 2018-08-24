@@ -1,0 +1,59 @@
+<ul class="list" *ngFor="let actor of sortParticipants()">
+  <li>
+    <div class="box {{actor.describe()}}"
+       [ngClass]="{ active: actor.active }"
+       title="This {{actor.getType()}} is {{actor.describe() || 'visible'}}"
+       (click)="select(actor)"
+    >
+      <div class="title-row">
+        <span class="marker">
+          <i class="fas fa-crown fa-fw" *ngIf="actor.active" title="It's this {{actor.getType()}}'s turn"></i>
+        </span>
+        <span class="title" title="The {{actor.getType()}}'s name">
+          <span class="creature">
+            <i class="fas fa-fw fa-lg" [ngClass]="actor.icon"></i>
+            <span class="name">
+              {{actor.name}}
+            </span>
+          </span>
+          <span class="label" title="The {{actor.player ? 'player' : 'starting round'}} for this {{actor.getType()}}"
+            [ngClass]="{'player': actor.isCharacter(), 'event': actor.isEvent()}"
+          >
+            <span *ngIf="actor.isCharacter()">{{actor.player}}</span>
+            <span *ngIf="actor.isEvent()">{{ 'Round ' + actor.startingRound}}</span>
+          </span>
+        </span>
+      </div>
+      <div class="details">
+        <span class="image" *ngIf="actor.image.url">
+          <img [src]="actor.image.url">
+        </span>
+        <span class="description" *ngIf="actor.isEvent()">
+          {{actor.description}}
+        </span>
+        <span class="creature-detail" *ngIf="actor.isCreature()">
+          <span class="hp" title="Hit Points (HP)">
+            <i class="fas fa-heart fa-fw fa-lg"></i>
+            <span class="current-hp" [ngClass]="actor.describe()">
+              {{actor.currentHP}}
+            </span>
+            / {{actor.hp}}
+          </span>
+          <span class="ac" title="Armor Class (AC)">
+            <i class="fas fa-shield-alt fa-fw fa-lg"></i>
+            {{actor.ac}}
+          </span>
+          <span class="init" title="Initiative">
+            <i class="fas fa-hourglass-half fa-fw fa-lg"></i>
+            {{actor.init || actor.describeInitMod()}}
+          </span>
+        </span>
+      </div>
+    </div>
+      <app-toolbar [actor]="actor"
+         [ngClass]="{ 'visible': selected === actor.id}"
+         (deleted)="onRemoveItem($event)"
+         (damaged)="onDamaged($event)"
+      ></app-toolbar>
+  </li>
+</ul>

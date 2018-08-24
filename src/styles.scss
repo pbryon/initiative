@@ -1,0 +1,43 @@
+@import './variables';
+
+body {
+  background-color: $color-bg;
+  color: $color-fg;
+  margin: 0;
+}
+
+* {
+  font-family: $font-normal;
+  font-size: $font-size-normal;
+}
+
+p, a {
+  padding: $margin-normal;
+  margin: 0;
+}
+
+header h1 {
+  font-family: $font-title;
+  font-size: $font-size-title;
+  text-align: center;
+  line-height: $line-height-fixed;
+  margin: $margin-small;
+  padding-top: $margin-small;
+}
+
+h2 {
+  font-family: $font-title;
+  font-size: $font-size-subtitle;
+  margin: $margin-normal;
+  line-height: $line-height-fixed;
+}
+
+ul { // reset built-in defaults
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+  list-style: none;
+}

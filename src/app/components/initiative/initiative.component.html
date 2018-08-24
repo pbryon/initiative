@@ -1,0 +1,37 @@
+<div class="error" *ngIf="error">
+  {{error}}
+</div>
+<section *ngIf="actors.length > 0">
+  <header class="title">
+    <h2>Initiative</h2>
+    <span class="modifier" title="Initiative modifier">
+      <i class="fas fa-hourglass-half fa-fw"></i>
+    </span>
+    <span class="initiative">
+      <button class="top" (click)="submit()">
+        Start {{round === 1 ? 'encounter' : 'round'}}
+      </button>
+    </span>
+  </header>
+<span class="actor" *ngFor="let actor of actors">
+  <span class="name">
+    {{actor.name}}
+  </span>
+  <span class="modifier">
+    {{actor.describeInitMod()}}
+  </span>
+  <span class="initiative">
+    <input [(ngModel)]="values[actor.id]" type="number" min="1" max="20" required/>
+    <span>or</span>
+    <button (click)="rollFor(actor)">Roll</button>
+  </span>
+</span>
+<span class="all">
+  <span class="name">&nbsp;</span>
+  <span class="modifier">&nbsp;</span>
+  <span class="initiative">
+    <span>or</span>
+    <button (click)="rollAll()">Roll all</button>
+  </span>
+</span>
+</section>
