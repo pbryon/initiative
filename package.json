@@ -28,8 +28,8 @@
     "zone.js": "^0.8.19"
   },
   "devDependencies": {
-    "@angular/cli": "~1.7.4",
-    "@angular/compiler-cli": "^5.2.11",
+    "@angular/cli": "^8.1.1",
+    "@angular/compiler-cli": "^8.1.1",
     "@angular/language-service": "^5.2.11",
     "@types/jasmine": "^2.8.8",
     "@types/jasminewd2": "~2.0.2",
